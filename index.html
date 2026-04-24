@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Word Master | Vocabulary Building Game</title>
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #fff;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Animated Background */
+        .animated-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            overflow: hidden;
+        }
+
+        .bubble {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            animation: floatBubble 15s infinite ease-in-out;
+        }
+
+        @keyframes floatBubble {
+            0%, 100% {
+                transform: translateY(0) translateX(0);
+            }
+            25% {
+                transform: translateY(-50px) translateX(30px);
+            }
+            50% {
+                transform: translateY(20px) translateX(-20px);
+            }
+            75% {
+                transform: translateY(-30px) translateX(40px);
+            }
+        }
+
+        /* Header Card */
+        .header-card {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border-radius: 30px;
+            padding: 20px;
+            margin-bottom: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .game-icon {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .game-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin: 0;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #ffe66d, #ff6b6b);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        /* Stat Cards */
+        .stat-card {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 15px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-icon {
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            opacity: 0.8;
+        }
+
+        .stat-value {
+            font-size: 1.8rem;
+            font-weight: 800;
+            line-height: 1;
+        }
+
+        /* Game Card */
+        .game-card {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border-radius: 30px;
+            padding: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        /* Scrambled Word Display */
+        .scrambled-word {
+            font-size: 2.5rem;
+            font-weight: 800;
+            letter-spacing: 10px;
+            text-align: center;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 30px;
+            border-radius: 20px;
+            margin-bottom: 30px;
+            word-break: break-word;
+            animation: glow 2s infinite;
+        }
+
+        @keyframes glow {
+            0%, 100% { text-shadow: 0 0 5px rgba(255,255,255,0.5); }
+            50% { text-shadow: 0 0 20px rgba(255,255,255,0.8); }
+        }
+
+        /* Hint Box */
+        .hint-box {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 15px;
+            padding: 15px;
+            margin-bottom: 30px;
+            border-left: 4px solid #ffe66d;
+        }
+
+        /* Timer */
+        .timer-container {
+            margin-bottom: 30px;
+        }
+
+        .timer-bar {
+            height: 10px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .timer-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #4ecdc4, #ffe66d);
+            transition: width 0.1s linear;
+            border-radius: 10px;
+        }
+
+        /* Input Area */
+        .guess-area {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .word-input {
+            flex: 1;
+            padding: 15px 20px;
+            font-size: 1.1rem;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            color: white;
+            font-family: 'Poppins', monospace;
+            text-transform: uppercase;
+            text-align: center;
+            letter-spacing: 2px;
+        }
+
+        .word-input:focus {
+            outline: none;
+            border-color: #ffe66d;
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .word-input.wrong-animation {
+            animation: shake 0.3s ease;
+            border-color: #ff6b6b;
+            background: rgba(255, 107, 107, 0.3);
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-10px); }
+            75% { transform: translateX(10px); }
+        }
+
+        .guess-btn, .hint-btn, .next-btn {
+            padding: 15px 30px;
+            border: none;
+            border-radius: 15px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .guess-btn {
+            background: linear-gradient(135deg, #4ecdc4, #1a535c);
+            color: white;
+        }
+
+        .guess-btn:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(78, 205, 196, 0.3);
+        }
+
+        .hint-btn {
+            background: linear-gradient(135deg, #ffe66d, #f7b05e);
+            color: #333;
+        }
+
+        .hint-btn:hover:not(:disabled) {
+            transform: translateY(-2px);
+        }
+
+        .next-btn {
+            background: linear-gradient(135deg, #a8e6cf, #3b8d6e);
+            color: white;
+        }
+
+        /* Level Info */
+        .level-info {
+            display: inline-block;
+            padding: 8px 20px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 30px;
+            margin-top: 20px;
+        }
+
+        /* Leaderboard */
+        .leaderboard-card {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 20px;
+        }
+
+        .leaderboard-list {
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .leaderboard-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px;
+            margin-bottom: 8px;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            transition: all 0.2s;
+        }
+
+        .leaderboard-item:hover {
+            transform: translateX(5px);
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Wrong Answer Popup */
+        .wrong-popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: linear-gradient(135deg, #ff6b6b, #c92a2a);
+            padding: 20px 40px;
+            border-radius: 50px;
+            font-weight: 800;
+            font-size: 1.5rem;
+            z-index: 1000;
+            animation: popupFade 1s ease-out forwards;
+            white-space: nowrap;
+        }
+
+        @keyframes popupFade {
+            0% {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(0.5);
+            }
+            20% {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1.2);
+            }
+            80% {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1);
+            }
+            100% {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(0.8);
+            }
+        }
+
+        /* Correct Answer Popup */
+        .correct-popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: linear-gradient(135deg, #4ecdc4, #1a535c);
+            padding: 20px 40px;
+            border-radius: 50px;
+            font-weight: 800;
+            font-size: 1.5rem;
+            z-index: 1000;
+            animation: popupFade 1s ease-out forwards;
+        }
+
+        /* Level Up Animation */
+        .level-up {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: linear-gradient(135deg, #ffe66d, #ff6b6b);
+            padding: 30px 50px;
+            border-radius: 30px;
+            font-weight: 800;
+            font-size: 2rem;
+            z-index: 1000;
+            animation: levelUpAnim 1.5s ease-out forwards;
+            white-space: nowrap;
+        }
+
+        @keyframes levelUpAnim {
+            0% {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(0.3);
+            }
+            30% {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1.2);
+            }
+            70% {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1);
+            }
+            100% {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(0.5);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .game-title {
+                font-size: 1.5rem;
+            }
+            
+            .scrambled-word {
+                font-size: 1.5rem;
+                letter-spacing: 5px;
+                padding: 20px;
+            }
+            
+            .guess-area {
+                flex-direction: column;
+            }
+            
+            .stat-value {
+                font-size: 1.2rem;
+            }
+            
+            .wrong-popup, .correct-popup {
+                font-size: 1rem;
+                padding: 15px 30px;
+                white-space: nowrap;
+            }
+            
+            .level-up {
+                font-size: 1.2rem;
+                padding: 20px 30px;
+                white-space: nowrap;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="animated-bg" id="animatedBg"></div>
+
+    <div class="container py-3 py-md-4">
+        <!-- Header -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="header-card text-center">
+                    <div class="game-icon">
+                        <i class="fas fa-brain"></i>
+                        <i class="fas fa-magic"></i>
+                    </div>
+                    <h1 class="game-title">WORD <span class="gradient-text">MASTER</span></h1>
+                    <p class="mt-2">Unscramble the letters • Test Your Vocabulary</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Stats Row -->
+        <div class="row g-3 mb-4">
+            <div class="col-6 col-md-3">
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="fas fa-star"></i></div>
+                    <div class="stat-label">SCORE</div>
+                    <div class="stat-value" id="score">0</div>
+                </div>
+            </div>
+            <div class="col-6 col-md-3">
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="fas fa-chart-line"></i></div>
+                    <div class="stat-label">LEVEL</div>
+                    <div class="stat-value" id="level">1</div>
+                </div>
+            </div>
+            <div class="col-6 col-md-3">
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="fas fa-fire"></i></div>
+                    <div class="stat-label">STREAK</div>
+                    <div class="stat-value" id="streak">0</div>
+                </div>
+            </div>
+            <div class="col-6 col-md-3">
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="fas fa-trophy"></i></div>
+                    <div class="stat-label">BEST</div>
+                    <div class="stat-value" id="bestScore">0</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Game Area -->
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="game-card">
+                    <!-- Level Display -->
+                    <div class="text-center mb-3">
+                        <span class="level-info">
+                            <i class="fas fa-crown"></i> LEVEL <span id="levelNumber">1</span>
+                        </span>
+                    </div>
+
+                    <!-- Scrambled Word -->
+                    <div class="scrambled-word" id="scrambledWord">
+                        LOADING...
+                    </div>
+
+                    <!-- Hint Box -->
+                    <div class="hint-box">
+                        <i class="fas fa-lightbulb"></i>
+                        <strong>Hint:</strong> <span id="hint">Click hint button for help!</span>
+                    </div>
+
+                    <!-- Timer -->
+                    <div class="timer-container">
+                        <div class="d-flex justify-content-between mb-2">
+                            <span><i class="fas fa-hourglass-half"></i> Time Left</span>
+                            <span id="timerValue">30s</span>
+                        </div>
+                        <div class="timer-bar">
+                            <div class="timer-fill" id="timerFill" style="width: 100%"></div>
+                        </div>
+                    </div>
+
+                    <!-- Guess Area -->
+                    <div class="guess-area">
+                        <input type="text" id="guessInput" class="word-input" 
+                               placeholder="TYPE YOUR ANSWER HERE" maxlength="20" autocomplete="off">
+                        <button class="guess-btn" id="guessBtn">
+                            <i class="fas fa-check"></i> SUBMIT
+                        </button>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="d-flex gap-3 justify-content-center flex-wrap">
+                        <button class="hint-btn" id="hintBtn">
+                            <i class="fas fa-lightbulb"></i> USE HINT
+                        </button>
+                        <button class="next-btn" id="nextBtn" style="display: none;">
+                            <i class="fas fa-forward"></i> NEXT WORD
+                        </button>
+                    </div>
+
+                    <!-- Message Area -->
+                    <div id="messageArea" class="text-center mt-3" style="min-height: 50px;"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Leaderboard -->
+        <div class="row mt-4">
+            <div class="col-12">
+                <div class="leaderboard-card">
+                    <h5 class="text-center mb-3">
+                        <i class="fas fa-trophy"></i> CHAMPIONS LEADERBOARD
+                    </h5>
+                    <div id="leaderboardList" class="leaderboard-list">
+                        <div class="text-center">No scores yet. Play to become a champion!</div>
+                    </div>
+                    <button class="btn btn-sm btn-outline-light mt-3 w-100" id="clearScoresBtn">
+                        <i class="fas fa-trash-alt"></i> Clear Leaderboard
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
