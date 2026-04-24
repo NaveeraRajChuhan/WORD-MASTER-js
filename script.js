@@ -4,7 +4,7 @@ const wordDatabase = {
         { word: "CAT", hint: "A furry pet that says meow" },
         { word: "DOG", hint: "Man's best friend" },
         { word: "SUN", hint: "Bright star in the sky" },
-        { word: "CAR", hint "Four-wheeled vehicle" },
+        { word: "CAR", hint :"Four-wheeled vehicle" },
         { word: "BIRD", hint: "Animal that can fly" }
     ],
     2: [
