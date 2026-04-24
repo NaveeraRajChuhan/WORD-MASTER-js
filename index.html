@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,7 +31,6 @@
             overflow-x: hidden;
         }
 
-        /* Animated Background */
         .animated-bg {
             position: fixed;
             top: 0;
@@ -49,21 +49,12 @@
         }
 
         @keyframes floatBubble {
-            0%, 100% {
-                transform: translateY(0) translateX(0);
-            }
-            25% {
-                transform: translateY(-50px) translateX(30px);
-            }
-            50% {
-                transform: translateY(20px) translateX(-20px);
-            }
-            75% {
-                transform: translateY(-30px) translateX(40px);
-            }
+            0%, 100% { transform: translateY(0) translateX(0); }
+            25% { transform: translateY(-50px) translateX(30px); }
+            50% { transform: translateY(20px) translateX(-20px); }
+            75% { transform: translateY(-30px) translateX(40px); }
         }
 
-        /* Header Card */
         .header-card {
             background: rgba(255, 255, 255, 0.15);
             backdrop-filter: blur(10px);
@@ -98,7 +89,6 @@
             color: transparent;
         }
 
-        /* Stat Cards */
         .stat-card {
             background: rgba(255, 255, 255, 0.15);
             backdrop-filter: blur(10px);
@@ -130,7 +120,6 @@
             line-height: 1;
         }
 
-        /* Game Card */
         .game-card {
             background: rgba(255, 255, 255, 0.15);
             backdrop-filter: blur(10px);
@@ -139,7 +128,6 @@
             border: 1px solid rgba(255, 255, 255, 0.3);
         }
 
-        /* Scrambled Word Display */
         .scrambled-word {
             font-size: 2.5rem;
             font-weight: 800;
@@ -158,7 +146,6 @@
             50% { text-shadow: 0 0 20px rgba(255,255,255,0.8); }
         }
 
-        /* Hint Box */
         .hint-box {
             background: rgba(0, 0, 0, 0.3);
             border-radius: 15px;
@@ -167,7 +154,6 @@
             border-left: 4px solid #ffe66d;
         }
 
-        /* Timer */
         .timer-container {
             margin-bottom: 30px;
         }
@@ -186,7 +172,6 @@
             border-radius: 10px;
         }
 
-        /* Input Area */
         .guess-area {
             display: flex;
             gap: 15px;
@@ -225,7 +210,7 @@
             75% { transform: translateX(10px); }
         }
 
-        .guess-btn, .hint-btn, .next-btn {
+        .guess-btn, .hint-btn, .next-btn, .level-select-btn {
             padding: 15px 30px;
             border: none;
             border-radius: 15px;
@@ -257,7 +242,51 @@
             color: white;
         }
 
-        /* Level Info */
+        .level-selector-container {
+            margin-bottom: 20px;
+        }
+
+        .level-select-group {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .level-select {
+            background: rgba(0, 0, 0, 0.3);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 15px;
+            padding: 12px 20px;
+            color: white;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .level-select option {
+            background: #1a1a2e;
+            color: white;
+        }
+
+        .level-select:focus {
+            outline: none;
+            border-color: #ffe66d;
+        }
+
+        .level-select-btn {
+            background: linear-gradient(135deg, #ff6b6b, #c92a2a);
+            color: white;
+            padding: 12px 25px;
+        }
+
+        .level-select-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(255, 107, 107, 0.3);
+        }
+
         .level-info {
             display: inline-block;
             padding: 8px 20px;
@@ -266,7 +295,6 @@
             margin-top: 20px;
         }
 
-        /* Leaderboard */
         .leaderboard-card {
             background: rgba(255, 255, 255, 0.15);
             backdrop-filter: blur(10px);
@@ -294,7 +322,6 @@
             background: rgba(255, 255, 255, 0.1);
         }
 
-        /* Wrong Answer Popup */
         .wrong-popup {
             position: fixed;
             top: 50%;
@@ -308,6 +335,20 @@
             z-index: 1000;
             animation: popupFade 1s ease-out forwards;
             white-space: nowrap;
+        }
+
+        .correct-popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: linear-gradient(135deg, #4ecdc4, #1a535c);
+            padding: 20px 40px;
+            border-radius: 50px;
+            font-weight: 800;
+            font-size: 1.5rem;
+            z-index: 1000;
+            animation: popupFade 1s ease-out forwards;
         }
 
         @keyframes popupFade {
@@ -329,22 +370,6 @@
             }
         }
 
-        /* Correct Answer Popup */
-        .correct-popup {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: linear-gradient(135deg, #4ecdc4, #1a535c);
-            padding: 20px 40px;
-            border-radius: 50px;
-            font-weight: 800;
-            font-size: 1.5rem;
-            z-index: 1000;
-            animation: popupFade 1s ease-out forwards;
-        }
-
-        /* Level Up Animation */
         .level-up {
             position: fixed;
             top: 50%;
@@ -379,37 +404,16 @@
             }
         }
 
-        /* Responsive */
         @media (max-width: 768px) {
-            .game-title {
-                font-size: 1.5rem;
-            }
-            
-            .scrambled-word {
-                font-size: 1.5rem;
-                letter-spacing: 5px;
-                padding: 20px;
-            }
-            
-            .guess-area {
-                flex-direction: column;
-            }
-            
-            .stat-value {
-                font-size: 1.2rem;
-            }
-            
-            .wrong-popup, .correct-popup {
-                font-size: 1rem;
-                padding: 15px 30px;
-                white-space: nowrap;
-            }
-            
-            .level-up {
-                font-size: 1.2rem;
-                padding: 20px 30px;
-                white-space: nowrap;
-            }
+            .game-title { font-size: 1.5rem; }
+            .scrambled-word { font-size: 1.5rem; letter-spacing: 5px; padding: 20px; }
+            .guess-area { flex-direction: column; }
+            .stat-value { font-size: 1.2rem; }
+            .wrong-popup, .correct-popup { font-size: 1rem; padding: 15px 30px; white-space: nowrap; }
+            .level-up { font-size: 1.2rem; padding: 20px 30px; white-space: nowrap; }
+            .level-select-group { flex-direction: column; width: 100%; }
+            .level-select { width: 100%; }
+            .level-select-btn { width: 100%; }
         }
     </style>
 </head>
@@ -417,7 +421,6 @@
     <div class="animated-bg" id="animatedBg"></div>
 
     <div class="container py-3 py-md-4">
-        <!-- Header -->
         <div class="row mb-4">
             <div class="col-12">
                 <div class="header-card text-center">
@@ -431,7 +434,6 @@
             </div>
         </div>
 
-        <!-- Stats Row -->
         <div class="row g-3 mb-4">
             <div class="col-6 col-md-3">
                 <div class="stat-card">
@@ -463,29 +465,64 @@
             </div>
         </div>
 
-        <!-- Main Game Area -->
         <div class="row justify-content-center">
             <div class="col-lg-8">
                 <div class="game-card">
-                    <!-- Level Display -->
+                    <div class="level-selector-container">
+                        <div class="level-select-group">
+                            <select id="levelSelector" class="level-select">
+                                <option value="1">🌟 LEVEL 1 - Beginner</option>
+                                <option value="2">📘 LEVEL 2 - Easy</option>
+                                <option value="3">📗 LEVEL 3 - Moderate</option>
+                                <option value="4">📙 LEVEL 4 - Intermediate</option>
+                                <option value="5">📕 LEVEL 5 - Upper Intermediate</option>
+                                <option value="6">🔰 LEVEL 6 - Advanced</option>
+                                <option value="7">⚡ LEVEL 7 - Expert</option>
+                                <option value="8">💪 LEVEL 8 - Master</option>
+                                <option value="9">🎯 LEVEL 9 - Grandmaster</option>
+                                <option value="10">🏆 LEVEL 10 - Legend</option>
+                                <option value="11">🔥 LEVEL 11 - Epic</option>
+                                <option value="12">💎 LEVEL 12 - Mythic</option>
+                                <option value="13">👑 LEVEL 13 - Royal</option>
+                                <option value="14">⭐ LEVEL 14 - Stellar</option>
+                                <option value="15">🌙 LEVEL 15 - Lunar</option>
+                                <option value="16">☀️ LEVEL 16 - Solar</option>
+                                <option value="17">🌌 LEVEL 17 - Galactic</option>
+                                <option value="18">🚀 LEVEL 18 - Cosmic</option>
+                                <option value="19">🪐 LEVEL 19 - Universe</option>
+                                <option value="20">✨ LEVEL 20 - Infinity</option>
+                                <option value="21">💫 LEVEL 21 - Eternity</option>
+                                <option value="22">🎨 LEVEL 22 - Artistic</option>
+                                <option value="23">🧠 LEVEL 23 - Genius</option>
+                                <option value="24">📚 LEVEL 24 - Scholar</option>
+                                <option value="25">🎓 LEVEL 25 - Professor</option>
+                                <option value="26">🏅 LEVEL 26 - Champion</option>
+                                <option value="27">🥇 LEVEL 27 - Olympian</option>
+                                <option value="28">💯 LEVEL 28 - Perfect</option>
+                                <option value="29">👁️ LEVEL 29 - Omniscient</option>
+                                <option value="30">🔮 LEVEL 30 - Wizard</option>
+                            </select>
+                            <button class="level-select-btn" id="goToLevelBtn">
+                                <i class="fas fa-rocket"></i> GO TO LEVEL
+                            </button>
+                        </div>
+                    </div>
+
                     <div class="text-center mb-3">
                         <span class="level-info">
-                            <i class="fas fa-crown"></i> LEVEL <span id="levelNumber">1</span>
+                            <i class="fas fa-crown"></i> CURRENT LEVEL <span id="levelNumber">1</span>
                         </span>
                     </div>
 
-                    <!-- Scrambled Word -->
                     <div class="scrambled-word" id="scrambledWord">
                         LOADING...
                     </div>
 
-                    <!-- Hint Box -->
                     <div class="hint-box">
                         <i class="fas fa-lightbulb"></i>
                         <strong>Hint:</strong> <span id="hint">Click hint button for help!</span>
                     </div>
 
-                    <!-- Timer -->
                     <div class="timer-container">
                         <div class="d-flex justify-content-between mb-2">
                             <span><i class="fas fa-hourglass-half"></i> Time Left</span>
@@ -496,16 +533,14 @@
                         </div>
                     </div>
 
-                    <!-- Guess Area -->
                     <div class="guess-area">
                         <input type="text" id="guessInput" class="word-input" 
-                               placeholder="TYPE YOUR ANSWER HERE" maxlength="20" autocomplete="off">
+                               placeholder="TYPE YOUR ANSWER HERE" maxlength="30" autocomplete="off">
                         <button class="guess-btn" id="guessBtn">
                             <i class="fas fa-check"></i> SUBMIT
                         </button>
                     </div>
 
-                    <!-- Action Buttons -->
                     <div class="d-flex gap-3 justify-content-center flex-wrap">
                         <button class="hint-btn" id="hintBtn">
                             <i class="fas fa-lightbulb"></i> USE HINT
@@ -515,13 +550,11 @@
                         </button>
                     </div>
 
-                    <!-- Message Area -->
                     <div id="messageArea" class="text-center mt-3" style="min-height: 50px;"></div>
                 </div>
             </div>
         </div>
 
-        <!-- Leaderboard -->
         <div class="row mt-4">
             <div class="col-12">
                 <div class="leaderboard-card">
