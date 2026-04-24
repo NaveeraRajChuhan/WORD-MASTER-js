@@ -27,7 +27,190 @@ const wordDatabase = {
         { word: "RESPONSIBILITY", hint: "Duty or obligation" },
         { word: "ACCOMMODATION", hint: "Place to stay or live" },
         { word: "CIRCUMSTANCES", hint: "Conditions affecting a situation" }
-    ]
+    ] ,
+
+    5: [
+    { word: "ADVENTURE", hint: "Exciting or unusual experience" },
+    { word: "CELEBRATION", hint: "Party or festive event" },
+    { word: "DETERMINATION", hint: "Firmness of purpose" },
+    { word: "ENTHUSIASM", hint: "Intense enjoyment or interest" },
+    { word: "GRATITUDE", hint: "Thankfulness and appreciation" }
+],
+6: [
+    { word: "PHOTOGRAPH", hint: "Picture taken by camera" },
+    { word: "RESTAURANT", hint: "Place to eat out" },
+    { word: "UNIVERSITY", hint: "Higher education institution" },
+    { word: "VEGETABLE", hint: "Edible plant like carrot" },
+    { word: "CALENDAR", hint: "Shows days and months" }
+],
+7: [
+    { word: "AMBITION", hint: "Strong desire to achieve" },
+    { word: "COMMUNITY", hint: "Group of people living together" },
+    { word: "DIFFERENCE", hint: "Not the same" },
+    { word: "EXPERIENCE", hint: "Practical contact with facts" },
+    { word: "IMAGINATION", hint: "Ability to form mental images" }
+],
+8: [
+    { word: "KNOWLEDGE", hint: "Facts and information acquired" },
+    { word: "LANGUAGE", hint: "System of communication" },
+    { word: "MAGNIFICENT", hint: "Extremely beautiful" },
+    { word: "NECESSARY", hint: "Required or needed" },
+    { word: "OPPORTUNITY", hint: "Favorable time or chance" }
+],
+9: [
+    { word: "POSSIBILITY", hint: "Chance that something exists" },
+    { word: "QUALIFICATION", hint: "Official requirement met" },
+    { word: "RECOMMEND", hint: "Suggest as good" },
+    { word: "SIGNIFICANT", hint: "Important or notable" },
+    { word: "TECHNOLOGY", hint: "Application of scientific knowledge" }
+],
+10: [
+    { word: "UNDERSTAND", hint: "Perceive meaning" },
+    { word: "VALUABLE", hint: "Worth a lot" },
+    { word: "WEATHER", hint: "Atmospheric conditions" },
+    { word: "XENOPHOBIA", hint: "Fear of strangers" },
+    { word: "YOURSELF", hint: "Reflexive pronoun" }
+],
+11: [
+    { word: "ACHIEVEMENT", hint: "Something accomplished" },
+    { word: "BEAUTIFULLY", hint: "In a beautiful manner" },
+    { word: "CONFIDENCE", hint: "Belief in oneself" },
+    { word: "DELICIOUS", hint: "Pleasant taste" },
+    { word: "ENCOURAGE", hint: "Give support" }
+],
+12: [
+    { word: "FANTASTIC", hint: "Extraordinarily good" },
+    { word: "GENEROUS", hint: "Willing to give" },
+    { word: "HESITATE", hint: "Pause before action" },
+    { word: "INCREDIBLE", hint: "Hard to believe" },
+    { word: "JOURNEY", hint: "Long travel" }
+],
+13: [
+    { word: "KINDERGARTEN", hint: "Preschool institution" },
+    { word: "LIVELY", hint: "Full of life" },
+    { word: "MEMORABLE", hint: "Worth remembering" },
+    { word: "NUTRITION", hint: "Food for health" },
+    { word: "OCCASION", hint: "Special event" }
+],
+14: [
+    { word: "PERSISTENCE", hint: "Continued effort" },
+    { word: "QUESTIONNAIRE", hint: "Survey form" },
+    { word: "RADIANT", hint: "Shining brightly" },
+    { word: "SPECTACULAR", hint: "Impressive show" },
+    { word: "THOUGHTFUL", hint: "Considerate of others" }
+],
+15: [
+    { word: "UNFORGETTABLE", hint: "Cannot be forgotten" },
+    { word: "VICTORIOUS", hint: "Having won" },
+    { word: "WONDERFUL", hint: "Extremely good" },
+    { word: "XEROGRAPHY", hint: "Photocopying process" },
+    { word: "YESTERDAY", hint: "Day before today" }
+],
+16: [
+    { word: "ATMOSPHERE", hint: "Gaseous layer around Earth" },
+    { word: "BRILLIANT", hint: "Very bright or smart" },
+    { word: "COMPASSION", hint: "Sympathy for others" },
+    { word: "DILIGENT", hint: "Hardworking" },
+    { word: "ESSENTIAL", hint: "Absolutely necessary" }
+],
+17: [
+    { word: "FLEXIBILITY", hint: "Ability to bend easily" },
+    { word: "GRACIOUS", hint: "Polite and kind" },
+    { word: "HARMONIOUS", hint: "Peaceful and balanced" },
+    { word: "INTELLIGENT", hint: "Smart and clever" },
+    { word: "JUBILANT", hint: "Extremely joyful" }
+],
+18: [
+    { word: "KEYBOARD", hint: "Typing device" },
+    { word: "LEGENDARY", hint: "Famous and well-known" },
+    { word: "MIRACULOUS", hint: "Like a miracle" },
+    { word: "NEIGHBORHOOD", hint: "Local community area" },
+    { word: "OVERWHELMING", hint: "Very intense" }
+],
+19: [
+    { word: "PHENOMENAL", hint: "Remarkable and extraordinary" },
+    { word: "QUINTESSENTIAL", hint: "Perfect example" },
+    { word: "REMARKABLE", hint: "Worthy of attention" },
+    { word: "STUPENDOUS", hint: "Extremely impressive" },
+    { word: "TREMENDOUS", hint: "Very great in size" }
+],
+20: [
+    { word: "UNQUESTIONABLE", hint: "Beyond doubt" },
+    { word: "VERSATILE", hint: "Able to adapt easily" },
+    { word: "WHOLESOME", hint: "Healthy and good" },
+    { word: "XENIAL", hint: "Friendly to guests" },
+    { word: "YOUTHFUL", hint: "Young in spirit" }
+],
+21: [
+    { word: "ZIGZAG", hint: "Pattern with sharp turns" },
+    { word: "ABUNDANT", hint: "Plentiful and rich" },
+    { word: "BENEVOLENT", hint: "Kind and charitable" },
+    { word: "CAPTIVATE", hint: "Attract and hold attention" },
+    { word: "DISTINGUISH", hint: "Recognize differences" }
+],
+22: [
+    { word: "ELABORATE", hint: "Detailed and complex" },
+    { word: "FASCINATING", hint: "Extremely interesting" },
+    { word: "GLORIOUS", hint: "Beautiful and splendid" },
+    { word: "HOSPITABLE", hint: "Friendly to visitors" },
+    { word: "ILLUMINATE", hint: "Light up" }
+],
+23: [
+    { word: "JUSTIFICATION", hint: "Good reason for action" },
+    { word: "KALEIDOSCOPE", hint: "Color changing tube" },
+    { word: "LUMINOUS", hint: "Bright and shining" },
+    { word: "MAGNANIMOUS", hint: "Generous and forgiving" },
+    { word: "NOURISHMENT", hint: "Food for growth" }
+],
+24: [
+    { word: "ORCHESTRA", hint: "Group of musicians" },
+    { word: "PICTURESQUE", hint: "Visually attractive" },
+    { word: "QUIXOTIC", hint: "Idealistic and unrealistic" },
+    { word: "RESILIENCE", hint: "Ability to recover" },
+    { word: "SYMPHONY", hint: "Complex musical piece" }
+],
+25: [
+    { word: "TRANQUILITY", hint: "State of calmness" },
+    { word: "UNIVERSAL", hint: "Applicable everywhere" },
+    { word: "VIBRANT", hint: "Full of energy" },
+    { word: "WHIMSICAL", hint: "Playfully unusual" },
+    { word: "XENODOCHEION", hint: "Ancient inn or hospice" }
+],
+26: [
+    { word: "YELLOWSTONE", hint: "Famous US national park" },
+    { word: "ZENITH", hint: "Highest point" },
+    { word: "ACCOMMODATE", hint: "Provide space for" },
+    { word: "BIBLIOPHILE", hint: "Book lover" },
+    { word: "CHRONOLOGICAL", hint: "Order by time" }
+],
+27: [
+    { word: "DICHOTOMY", hint: "Division into two parts" },
+    { word: "ECLECTIC", hint: "Diverse and varied" },
+    { word: "FLAMBOYANT", hint: "Confident and stylish" },
+    { word: "GREGARIOUS", hint: "Sociable and outgoing" },
+    { word: "HIERARCHY", hint: "Ranking system" }
+],
+28: [
+    { word: "IDIOSYNCRASY", hint: "Unusual habit" },
+    { word: "JUXTAPOSITION", hint: "Place side by side" },
+    { word: "KINESTHETIC", hint: "Body movement learning" },
+    { word: "LETHARGIC", hint: "Sluggish and tired" },
+    { word: "METAMORPHOSIS", hint: "Complete transformation" }
+],
+29: [
+    { word: "NOSTALGIA", hint: "Sentimental past longing" },
+    { word: "OBLIVIOUS", hint: "Unaware of surroundings" },
+    { word: "PERSEVERANCE", hint: "Steady persistence" },
+    { word: "QUINTUPLE", hint: "Five times as much" },
+    { word: "RENAISSANCE", hint: "Cultural rebirth period" }
+],
+30: [
+    { word: "SERENDIPITY", hint: "Accidental good discovery" },
+    { word: "TRANSCENDENT", hint: "Beyond ordinary limits" },
+    { word: "UNPRECEDENTED", hint: "Never done before" },
+    { word: "VERISIMILITUDE", hint: "Appearance of truth" },
+    { word: "WHIPPERSNAPPER", hint: "Young and inexperienced person" }
+]
 };
 
 // Game Variables
